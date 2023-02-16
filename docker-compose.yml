@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  asm:
+    build: .
+    platform: linux/x86_64
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - "./srcs:/srcs"
+    tty: true
