@@ -13,12 +13,7 @@ void strlen_test(){
   printf("%zu\n",ft_strlen(a));
   free(a);
 }
-void strcpy_test(){
-  char s1[] = "aaaaaa";
-  char s2[] = "bbbbbb";
-  printf("%s\n",ft_strcpy(s1, s2));
-  printf("%s\n", s1);
-}
+
 int main(){
   strlen_test();
 }
