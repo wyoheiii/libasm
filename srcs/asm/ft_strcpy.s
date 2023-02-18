@@ -1,19 +1,18 @@
-global ft_strcpy
+global _ft_strcpy
 
-ft_strcpy:   ;dest rardi, src rdx
+_ft_strcpy:   ;dest rdi, src rsi
   push rbp
   mov rbp, rsp
-  sub rsp , 8
-  mov QWORD[rbp - 8], 0
-  mov rax, rdi
+  mov rcx, 0
   jmp .L2
 .LOOP:
-  mov BYTE[rax + [rbp - 8]], [rsi + [rbp - 8]]
-  inc [rbp - 8]
+  movzx edx , BYTE[rsi + rcx]
+  mov BYTE[rdi + rcx], dl
+  inc rcx
 .L2:
-  cmp BYTE[rdx + QWORD[rbp - 8]], 0
+  cmp BYTE[rsi + rcx], 0
   jne .LOOP
-  mov BYTE[rax + [rbp - 8]], 0
-  add rsp, 8
+  mov BYTE[rdi + rcx], 0
+  mov rax, rdi
   pop rbp
   ret

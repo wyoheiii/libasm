@@ -1,22 +1,61 @@
-	.file	"ft_strcpy.c"
-	.globl	ft_strcpy
-	.type	ft_strcpy, @function
-ft_strcpy:
-	movzx	ecx, BYTE PTR [rsi]
-	mov	rax, rdi
-	test	cl, cl
-	je	.L4
-	xor	edx, edx
-.L3:
-	mov	BYTE PTR [rax+rdx], cl
-	add	rdx, 1
-	movzx	ecx, BYTE PTR [rsi+rdx]
-	test	cl, cl
-	jne	.L3
-	add	rdx, rax
-	mov	BYTE PTR [rdx], 0
+	.text
+	.p2align 4
+	.globl _ft_strcpy
+_ft_strcpy:
+LFB0:
+	movzbl	(%rsi), %ecx
+	movq	%rdi, %rax
+	testb	%cl, %cl
+	je	L4
+	xorl	%edx, %edx
+	.p2align 4,,10
+	.p2align 3
+L3:
+	movb	%cl, (%rax,%rdx)
+	addq	$1, %rdx
+	movzbl	(%rsi,%rdx), %ecx
+	testb	%cl, %cl
+	jne	L3
+	addq	%rax, %rdx
+	movb	$0, (%rdx)
 	ret
-.L4:
-	mov	rdx, rdi
-	mov	BYTE PTR [rdx], 0
+	.p2align 4,,10
+	.p2align 3
+L4:
+	movq	%rdi, %rdx
+	movb	$0, (%rdx)
 	ret
+LFE0:
+	.section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
+EH_frame1:
+	.set L$set$0,LECIE1-LSCIE1
+	.long L$set$0
+LSCIE1:
+	.long	0
+	.byte	0x1
+	.ascii "zR\0"
+	.uleb128 0x1
+	.sleb128 -8
+	.byte	0x10
+	.uleb128 0x1
+	.byte	0x10
+	.byte	0xc
+	.uleb128 0x7
+	.uleb128 0x8
+	.byte	0x90
+	.uleb128 0x1
+	.align 3
+LECIE1:
+LSFDE1:
+	.set L$set$1,LEFDE1-LASFDE1
+	.long L$set$1
+LASFDE1:
+	.long	LASFDE1-EH_frame1
+	.quad	LFB0-.
+	.set L$set$2,LFE0-LFB0
+	.quad L$set$2
+	.uleb128 0
+	.align 3
+LEFDE1:
+	.ident	"GCC: (Homebrew GCC 12.2.0) 12.2.0"
+	.subsections_via_symbols

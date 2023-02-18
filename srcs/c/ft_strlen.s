@@ -1,36 +1,31 @@
-	.file	"ft_strlen.c"
-	.intel_syntax noprefix
-	.text
-	.globl	ft_strlen
-	.type	ft_strlen, @function
-ft_strlen:
-.LFB0:
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 1
+	.globl	_ft_strlen                      ## -- Begin function ft_strlen
+	.p2align	4, 0x90
+_ft_strlen:                             ## @ft_strlen
 	.cfi_startproc
-	push	rbp
+## %bb.0:
+	pushq	%rbp
 	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	mov	rbp, rsp
-	.cfi_def_cfa_register 6
-	sub	rsp, 24
-	mov	QWORD PTR -24[rbp], rdi
-	mov	QWORD PTR -8[rbp], 0
-	jmp	.L2
-.L3:
-	add	QWORD PTR -8[rbp], 1
-.L2:
-	mov	rdx, QWORD PTR -24[rbp]
-	mov	rax, QWORD PTR -8[rbp]
-	add	rax, rdx
-	movzx	eax, BYTE PTR [rax]
-	test	al, al
-	jne	.L3
-	mov	rax, QWORD PTR -8[rbp]
-	leave
-	.cfi_restore 6
-	.cfi_def_cfa 7, 8
-	ret
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	movq	%rdi, -8(%rbp)
+	movq	$0, -16(%rbp)
+LBB0_1:                                 ## =>This Inner Loop Header: Depth=1
+	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rcx
+	cmpb	$0, (%rax,%rcx)
+	je	LBB0_3
+## %bb.2:                               ##   in Loop: Header=BB0_1 Depth=1
+	movq	-16(%rbp), %rax
+	addq	$1, %rax
+	movq	%rax, -16(%rbp)
+	jmp	LBB0_1
+LBB0_3:
+	movq	-16(%rbp), %rax
+	popq	%rbp
+	retq
 	.cfi_endproc
-.LFE0:
-	.size	ft_strlen, .-ft_strlen
-	.ident	"GCC: (Debian 8.3.0-6) 8.3.0"
-	.section	.note.GNU-stack,"",@progbits
+                                        ## -- End function
+.subsections_via_symbols

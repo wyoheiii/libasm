@@ -1,14 +1,14 @@
 	.file	"test.c"
 	.intel_syntax noprefix
 	.text
+	.p2align 4,,15
 	.globl	f
 	.type	f, @function
 f:
 .LFB0:
 	.cfi_startproc
 	mov	rax, rdi
-	movzx	edx, BYTE PTR [rsi]
-	mov	BYTE PTR [rdi], dl
+	mov	BYTE PTR 2[rdi], 0
 	ret
 	.cfi_endproc
 .LFE0:
