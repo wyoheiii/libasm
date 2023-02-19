@@ -1,7 +1,7 @@
 SRCS =$(wildcard *.c)
 ASMS = $(SRCS:.c=.s)
 CC = gcc
-CFLAGS = -S -fno-asynchronous-unwind-tables
+CFLAGS = -S -fno-asynchronous-unwind-tables -O
 RM = rm -f
 
 all:$(ASMS)

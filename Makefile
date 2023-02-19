@@ -32,7 +32,7 @@ fclean : clean
 test: re
 		gcc $(ASMDIR)/main.c $(NAME)
 		./a.out
-		$(RM) a.out
+#		$(RM) a.out
 		make fclean -C .
 
 re: fclean all
