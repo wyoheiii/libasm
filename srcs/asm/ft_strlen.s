@@ -1,6 +1,6 @@
-global ft_strlen
+global _ft_strlen
 
-ft_strlen:
+_ft_strlen:
   push rbp                 ; push base ptr rsp--
   mov rbp,rsp              ; baseptr = stack ptr
   mov rax, 0               ; i = 0;
