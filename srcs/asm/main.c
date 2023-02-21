@@ -58,10 +58,31 @@ void readd(){
   close(fd1);
   close(fd2);
 }
+void dupp(){
+  //printf("%ld\n", ft_strdup("aa"));
+  size_t size = (size_t)INT_MAX;
+  char *a = malloc(size + 3ul);
+  memset(a,'a', size + 2ul);
+  a[size + 2ul] = '\0';
+  char *s1 = ft_strdup("");
+  char *s2 = ft_strdup("a");
+  char *s3 = ft_strdup("abcd");
+  char *s4 = ft_strdup(a);
+  printf("s1:%s\n",s1);
+  printf("s2:%s\n",s2);
+  printf("s3:%s\n",s3);
+  printf("s4:%ld, %ld\n",ft_strlen(s4), ft_strlen(a));
+  free(s1);
+  free(s2);
+  free(s3);
+  free(s4);
+  free(a);
+}
 int main(){
   lenn();
   cpyy();
   cmpp();
   writee();
   readd();
+  dupp();
 }

@@ -4,7 +4,7 @@ _ft_read:    ; ssize_t ft_read(int fd, const void *buf,size_t n_byte) rdi,rsi,rd
   push rbp
   mov rbp, rsp
   sub rsp, 16
-  mov rax, 0x2000003 ;0x2000000 system call number
+  mov rax, 0x2000003 ;0x2000000 system call table number
   syscall
   jae .ret   ; ~(CF) , systemcall err set cf
 .error:

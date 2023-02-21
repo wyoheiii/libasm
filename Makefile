@@ -19,14 +19,15 @@ asm:
 
 c:
 	make all -C $(CDIR)
-
-clean :
+cclean:
+	make clean -C $(CDIR)
+clean:
 		make clean -C $(ASMDIR)
-		make clean -C $(CDIR)
+#		make clean -C $(CDIR)
 
 fclean : clean
 		make fclean -C $(ASMDIR)
-		make fclean -C $(CDIR)
+#		make fclean -C $(CDIR)
 		$(RM) $(NAME)
 
 test: re
