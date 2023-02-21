@@ -46,9 +46,22 @@ void writee(){
   printf("strerr:%s\n",strerror(errno));
   free(a);
 }
+void readd(){
+  char buf[1000];
+  int fd1 = open("./Dockerfile", O_RDONLY);
+  int fd2 = open("a", O_RDONLY);
+  ssize_t res1 = ft_read(fd1,buf, 1000);
+  buf[res1] = '\0';
+  printf("res1:%ld, %s\n",res1, buf);
+  ssize_t res2 = ft_read(fd2,buf, 1000);
+  printf("errno:%d, res2:%ld, %s\n",errno,res2, strerror(errno));
+  close(fd1);
+  close(fd2);
+}
 int main(){
   lenn();
   cpyy();
   cmpp();
   writee();
+  readd();
 }
