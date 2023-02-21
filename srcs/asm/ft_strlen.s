@@ -3,7 +3,7 @@ global _ft_strlen
 _ft_strlen:
   push rbp                 ; push base ptr rsp--
   mov rbp,rsp              ; baseptr = stack ptr
-  mov rax, 0               ; i = 0;
+  xor rax, rax             ; i = 0;
   jmp .L2                  ;
 .L3:
   inc rax                  ; i + 1

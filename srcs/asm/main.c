@@ -29,13 +29,22 @@ void cmpp(){
   printf("a:  :%d\n",ft_strcmp("a",""));
   printf(":  :%d\n",ft_strcmp("",""));
   printf("abc:cba  :%d\n",ft_strcmp("abc","cba"));
-   printf("za:zb  :%d\n",ft_strcmp("za","zb"));
+  printf("za:zb  :%d\n",ft_strcmp("za","zb"));
   printf("z:a  :%d\n",ft_strcmp("z","a"));
 
 }
 void writee(){
-  printf("%ld\n", ft_write(1,"abcd", 4));
-  printf("%ld\n", ft_write(2,"abcd", 4));
+  size_t size = (size_t)INT_MAX;
+  char *a = malloc(size + 3ul);
+  memset(a,'a', size + 2ul);
+  a[size + 2ul] = '\0';
+  printf(":%ld\n", ft_write(1,"abcd", 4));
+  printf(":%ld\n", ft_write(2,"abcd", 4));
+  printf("err:%ld\n", ft_write(-1,"abcdefghi", 9));
+  printf("strerr:%s\n",strerror(errno));
+  printf("err:%ld\n", ft_write(1,a, ft_strlen(a)));
+  printf("strerr:%s\n",strerror(errno));
+  free(a);
 }
 int main(){
   lenn();

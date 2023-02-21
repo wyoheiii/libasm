@@ -3,7 +3,7 @@ global _ft_strcpy
 _ft_strcpy:   ;dest rdi, src rsi
   push rbp
   mov rbp, rsp
-  mov rcx, 0
+  xor rcx, rcx 
   jmp .L2
 .LOOP:
   movzx edx , BYTE[rsi + rcx]

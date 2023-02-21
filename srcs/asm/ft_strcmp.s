@@ -5,7 +5,7 @@ global _ft_strcmp
 _ft_strcmp: ;s1 rdi, src rsi
   push rbp
   mov rbp ,rsp
-  mov rcx, 0
+  xor rcx, rcx
 .IF1:
   movzx eax, BYTE s1_pos
   movzx edx, BYTE s2_pos
